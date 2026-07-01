@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="OnlineQuizApplication/QuizApp/src"/>
+	<classpathentry kind="lib" path="OnlineQuizApplication/QuizApp/lib/slf4j-api-1.7.32.jar"/>
+	<classpathentry kind="lib" path="OnlineQuizApplication/QuizApp/lib/slf4j-nop-1.7.32.jar"/>
+	<classpathentry kind="lib" path="OnlineQuizApplication/QuizApp/lib/sqlite-jdbc-3.44.1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
