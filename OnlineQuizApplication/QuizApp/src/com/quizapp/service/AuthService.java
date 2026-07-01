@@ -6,15 +6,8 @@ import com.quizapp.util.PasswordUtil;
 
 import java.sql.*;
 
-/**
- * Handles user registration and login (authentication).
- */
 public class AuthService {
 
-    /**
-     * Registers a new user account.
-     * @throws AuthException if the username is already taken or input is invalid.
-     */
     public User register(String username, String password, boolean asAdmin) throws AuthException {
         if (username == null || username.isBlank())
             throw new AuthException("Username cannot be empty.");
@@ -48,10 +41,6 @@ public class AuthService {
         }
     }
 
-    /**
-     * Attempts to log in with the given credentials.
-     * @throws AuthException if credentials are invalid.
-     */
     public User login(String username, String password) throws AuthException {
         String sql = "SELECT id, username, password_hash, salt, is_admin FROM users WHERE username = ?";
         try (PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(sql)) {
@@ -70,7 +59,6 @@ public class AuthService {
         }
     }
 
-    /** Checked exception representing an authentication/validation failure. */
     public static class AuthException extends Exception {
         public AuthException(String message) { super(message); }
     }
