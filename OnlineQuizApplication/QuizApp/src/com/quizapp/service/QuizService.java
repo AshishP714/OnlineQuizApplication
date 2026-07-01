@@ -10,17 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Handles CRUD operations for quizzes and their questions.
- * Option lists are stored as a "|"-delimited string; correct answer indices
- * as a ","-delimited string of 0-based option indices.
- */
 public class QuizService {
 
     private static final String OPT_DELIM = "\\|\\|";
     private static final String OPT_JOIN = "||";
-
-    // ---------- Quiz CRUD ----------
 
     public List<Quiz> getAllQuizzes() {
         List<Quiz> quizzes = new ArrayList<>();
@@ -90,8 +83,6 @@ public class QuizService {
         }
     }
 
-    // ---------- Question CRUD ----------
-
     public List<Question> getQuestionsForQuiz(int quizId) {
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM questions WHERE quiz_id = ? ORDER BY id ASC";
@@ -148,8 +139,6 @@ public class QuizService {
             throw new RuntimeException("Failed to delete question", e);
         }
     }
-
-    // ---------- Mapping helpers ----------
 
     private Quiz mapQuiz(ResultSet rs) throws SQLException {
         return new Quiz(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
