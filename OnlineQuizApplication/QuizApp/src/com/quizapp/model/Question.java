@@ -2,17 +2,13 @@ package com.quizapp.model;
 
 import java.util.List;
 
-/**
- * Represents a single multiple-choice question belonging to a quiz.
- * Supports single or multiple correct answers.
- */
 public class Question {
     private int id;
     private int quizId;
     private String text;
-    private List<String> options;      // option text, index-based (0..n-1)
-    private List<Integer> correctIndices; // indices into options that are correct
-    private boolean multipleAnswer;    // true if more than one correct answer allowed
+    private List<String> options;
+    private List<Integer> correctIndices;
+    private boolean multipleAnswer;
 
     public Question(int id, int quizId, String text, List<String> options,
                      List<Integer> correctIndices, boolean multipleAnswer) {
@@ -33,10 +29,6 @@ public class Question {
 
     public void setId(int id) { this.id = id; }
 
-    /**
-     * Checks whether the given set of selected option indices exactly matches
-     * the correct answer set.
-     */
     public boolean isCorrect(List<Integer> selectedIndices) {
         if (selectedIndices == null) return false;
         return new java.util.HashSet<>(selectedIndices).equals(new java.util.HashSet<>(correctIndices));
