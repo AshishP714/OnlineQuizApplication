@@ -9,12 +9,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Records quiz attempts and provides history / leaderboard queries.
- */
 public class ScoreService {
 
-    /** Records a completed quiz attempt for a user. */
     public void recordAttempt(int userId, int quizId, int score, int totalQuestions) {
         String sql = "INSERT INTO attempts(user_id, quiz_id, score, total_questions, attempt_date) VALUES (?,?,?,?,?)";
         try (PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(sql)) {
@@ -29,7 +25,6 @@ public class ScoreService {
         }
     }
 
-    /** Returns all past attempts for a given user, most recent first. */
     public List<QuizAttempt> getHistoryForUser(int userId) {
         List<QuizAttempt> attempts = new ArrayList<>();
         String sql = """
@@ -51,10 +46,8 @@ public class ScoreService {
         return attempts;
     }
 
-    /** Leaderboard entry: username, total attempts, average percentage score, best score. */
     public record LeaderboardEntry(String username, int attemptCount, double avgPercentage, int totalScore) { }
 
-    /** Overall leaderboard across all quizzes, ranked by average percentage score. */
     public List<LeaderboardEntry> getOverallLeaderboard(int limit) {
         List<LeaderboardEntry> entries = new ArrayList<>();
         String sql = """
@@ -85,7 +78,6 @@ public class ScoreService {
         return entries;
     }
 
-    /** Leaderboard for a specific quiz, ranked by score (best attempt per user). */
     public List<LeaderboardEntry> getQuizLeaderboard(int quizId, int limit) {
         List<LeaderboardEntry> entries = new ArrayList<>();
         String sql = """
