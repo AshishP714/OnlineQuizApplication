@@ -1,13 +1,10 @@
 package com.quizapp.model;
 
-/**
- * Represents a single recorded attempt of a user taking a quiz.
- */
 public class QuizAttempt {
     private int id;
     private int userId;
     private int quizId;
-    private String quizTitle; // convenience field for display
+    private String quizTitle;
     private int score;
     private int totalQuestions;
     private String attemptDate; // ISO timestamp string
