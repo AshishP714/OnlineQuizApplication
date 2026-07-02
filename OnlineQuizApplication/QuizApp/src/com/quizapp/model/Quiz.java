@@ -2,17 +2,14 @@ package com.quizapp.model;
 
 import java.util.List;
 
-/**
- * Represents a quiz - a named collection of questions on a topic.
- */
 public class Quiz {
     private int id;
     private String title;
     private String description;
-    private String difficulty; // Easy / Medium / Hard
-    private int timeLimitSeconds; // 0 = no limit
-    private int createdBy; // user id of admin who created it
-    private List<Question> questions; // may be null until loaded
+    private String difficulty;
+    private int timeLimitSeconds;
+    private int createdBy;
+    private List<Question> questions;
 
     public Quiz(int id, String title, String description, String difficulty,
                 int timeLimitSeconds, int createdBy) {
