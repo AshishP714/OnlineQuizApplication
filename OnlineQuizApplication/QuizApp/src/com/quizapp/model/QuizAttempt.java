@@ -7,7 +7,7 @@ public class QuizAttempt {
     private String quizTitle;
     private int score;
     private int totalQuestions;
-    private String attemptDate; // ISO timestamp string
+    private String attemptDate;
 
     public QuizAttempt(int id, int userId, int quizId, String quizTitle,
                         int score, int totalQuestions, String attemptDate) {
